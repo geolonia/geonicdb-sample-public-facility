@@ -91,7 +91,7 @@ function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>GeonicDB Template App</h1>
+        <h1>公共施設マップ</h1>
         <div className="status">
           {version ? (
             <span className="status-online">
