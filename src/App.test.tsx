@@ -14,7 +14,7 @@ describe('App', () => {
     await act(async () => {
       render(<App />)
     })
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('GeonicDB Template App')
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('公共施設マップ')
   })
 
   it('renders the create entity form section', async () => {
