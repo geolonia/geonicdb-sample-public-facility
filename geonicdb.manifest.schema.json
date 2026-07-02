@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["name", "description", "version", "sdkVersion", "source", "category", "repoUrl"],
+  "properties": {
+    "name": {"type": "string"},
+    "description": {"type": "string"},
+    "version": {"type": "string"},
+    "sdkVersion": {"type": "string", "const": "0.12.0"},
+    "source": {"type": "string", "description": "最初のdemo対象=geonicdb-demo-app"},
+    "category": {"type": "string"},
+    "repoUrl": {"type": "string", "format": "uri"},
+    "demoUrl": {"type": "string", "format": "uri"},
+    "themeColor": {"type": "string"}
+  },
+  "additionalProperties": false
+}
