@@ -32,7 +32,8 @@ git checkout -b feat/walking-skeleton
 ### 本番依存
 
 ```bash
-npm install @geolonia/geonicdb-sdk @geolonia/embed lucide-react
+# @geolonia/geonicdb-sdk@0.14.0 以降を使用（georel/geometry/coords ネイティブサポート）
+npm install @geolonia/geonicdb-sdk@0.14.0 @geolonia/embed lucide-react
 ```
 
 ### 開発依存
@@ -151,8 +152,21 @@ export function useFacilities(type = 'PublicFacility') {
 }
 ```
 
-> **georel が必要な場合**: `NgsiV2Client.listEntities()` は現在 `georel` オプションを持たない。
-> 地理フィルタが必要なら `fetch()` で直接 `/v2/entities?georel=...` を叩くエスケープハッチを使うこと。
+> **georel (SDK 0.14.0+)**: `NgsiV2Client.getEntities()` は `georel`/`geometry`/`coords` をネイティブサポートしている。
+> `fetch()` でのエスケープハッチは不要。以下のように geo クエリを SDK 経由で実行できる：
+>
+> ```typescript
+> const data = await client.getEntities({
+>   type,
+>   limit: 100,
+>   georel: 'near;maxDistance:1000',
+>   geometry: 'point',
+>   coords: '35.6,139.7',
+> });
+> ```
+>
+> `geometry` の型は `'point' | 'line' | 'polygon' | 'box'`。文字列から変換する場合は `as 'point' | 'line' | 'polygon' | 'box'` でキャストする。
+> 型定義の詳細は `node_modules/@geolonia/geonicdb-sdk/ngsi-v2/index.d.ts` の `NgsiV2QueryOptions` を参照。
 
 ---
 

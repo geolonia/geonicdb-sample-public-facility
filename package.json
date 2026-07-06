@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@geolonia/embed": "^1.19.1",
-    "@geolonia/geonicdb-sdk": "0.12.0",
+    "@geolonia/geonicdb-sdk": "^0.14.0",
     "lucide-react": "^1.23.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"

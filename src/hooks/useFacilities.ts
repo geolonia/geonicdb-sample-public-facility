@@ -24,25 +24,17 @@ export function useFacilities(type = 'PublicFacility') {
     setLoading(true);
     setError(null);
     try {
-      if (geoParams) {
-        // georel は SDK NgsiV2QueryOptions に未実装 → raw fetch で escape hatch
-        const params = new URLSearchParams({
-          type,
-          limit: '100',
+      // SDK 0.14.0+ で georel/geometry/coords をネイティブサポート
+      const data = await client.getEntities({
+        type,
+        limit: 100,
+        ...(geoParams && {
           georel: geoParams.georel,
+          geometry: geoParams.geometry as 'point' | 'line' | 'polygon' | 'box',
           coords: geoParams.coords,
-          geometry: geoParams.geometry,
-        });
-        const url = `${baseUrl || ''}/v2/entities?${params.toString()}`;
-        const res = await fetch(url);
-        if (!res.ok) throw new Error(`georel query failed: ${res.status}`);
-        const data = await res.json() as PublicFacilityEntity[];
-        setFacilities(data);
-      } else {
-        // 通常取得: SDK を使用
-        const data = await client.getEntities({ type, limit: 100 }) as PublicFacilityEntity[];
-        setFacilities(data);
-      }
+        }),
+      }) as PublicFacilityEntity[];
+      setFacilities(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch facilities');
     } finally {
