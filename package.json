@@ -10,10 +10,13 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "postinstall": "sed -i'' -e 's/geoloniaControl: string:/geoloniaControl: string;/' node_modules/@geolonia/embed/src/embed.d.ts || true"
   },
   "dependencies": {
-    "@geolonia/geonicdb-sdk": "0.12.0",
+    "@geolonia/embed": "^1.19.1",
+    "@geolonia/geonicdb-sdk": "^0.14.0",
+    "lucide-react": "^1.23.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
@@ -21,6 +24,7 @@
     "@eslint/js": "^9.39.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
+    "@types/mapbox-gl": "^3.4.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
