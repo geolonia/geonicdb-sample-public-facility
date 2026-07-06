@@ -10,8 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest",
-    "postinstall": "sed -i'' -e 's/geoloniaControl: string:/geoloniaControl: string;/' node_modules/@geolonia/embed/src/embed.d.ts || true"
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@geolonia/embed": "^1.19.1",
