@@ -255,3 +255,17 @@ VITE_GEOLONIA_API_KEY=YOUR-API-KEY
 - [ ] `.env.example` に `YOUR-API-KEY` のみ（実値なし）
 - [ ] main への直接 commit なし（ブランチ → PR）
 - [ ] `/code-review-expert --auto` → P0/P1 = 0
+
+---
+
+## チェックリスト（public flip 前）
+
+リポジトリを public にする前に以下を確認すること。
+
+- [ ] README が実体と整合している（未完成・骨格のみ・後続 PR 等の表現が取り残されていない・機能説明が実装と一致している）
+- [ ] `npm test -- --run` → passed ≥1, skipped = 0（最新 main で確認）
+- [ ] `npm run build` → SUCCESS
+- [ ] `.env.example` に実 API キーが含まれていない（`YOUR-API-KEY` のみ）
+- [ ] `git log --all` で秘密値が commit 履歴に含まれていない
+- [ ] CI が main で緑
+- [ ] `geonicdb.manifest.json` の description・keywords が実装内容と一致している
