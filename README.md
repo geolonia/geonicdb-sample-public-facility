@@ -2,8 +2,7 @@
 
 [@geolonia/geonicdb-sdk](https://www.npmjs.com/package/@geolonia/geonicdb-sdk) と [Geolonia Maps](https://geolonia.com/) を使って、公共施設のオープンデータを地図上に可視化するサンプルアプリケーションです。
 
-> **Walking skeleton 段階**: 現在は `geonicdb-app-template` ベースの骨格のみです。
-> 公共施設コンポーネント（FacilityCard / FacilityList / MapView 等）と SDK 配線は後続 PR で追加されます。
+GeonicDB（NGSI-LD 対応 Context Broker）に登録した公共施設エンティティを取得し、リスト表示と地図ピン表示を組み合わせた UI を提供します。
 
 ## セットアップ
 
@@ -46,11 +45,26 @@ Geolonia Maps の API キーは [Geolonia Dashboard](https://geolonia.com/) か�
 
 ```text
 src/
-├── main.tsx          # エントリポイント
-├── App.tsx           # メインコンポーネント
-├── App.css           # スタイル
-└── lib/
-    └── ngsi.ts       # NGSIv2 API クライアントユーティリティ
+├── main.tsx                      # エントリポイント
+├── App.tsx                       # メインコンポーネント（施設一覧＋地図）
+├── App.css                       # スタイル
+├── geolonia-embed.d.ts           # @geolonia/embed 型定義オーバーライド
+├── components/
+│   ├── map/
+│   │   ├── GeonicDbMap.tsx       # Geolonia Maps ラッパー
+│   │   └── FacilityMapView.tsx   # 施設ピン地図ビュー
+│   └── public-facility/
+│       ├── FacilityCard.tsx      # 施設カード
+│       ├── FacilityList.tsx      # 施設一覧
+│       ├── FacilityDetail.tsx    # 施設詳細パネル
+│       └── SpriteIcon.tsx        # スプライトアイコン
+├── hooks/
+│   └── useFacilities.ts          # GeonicDB から施設データ取得（SDK georel）
+├── lib/
+│   ├── ngsi.ts                   # NGSIv2 API ユーティリティ
+│   └── geo-types.ts              # 地理型定義
+└── types/
+    └── public-facility.ts        # 公共施設エンティティ型
 ```
 
 ## ビルド
@@ -61,13 +75,15 @@ npm run build
 
 `dist/` に静的ファイルが出力されます。
 
+## テスト
+
+```bash
+npm test
+```
+
 ## プレイブック
 
-> この section は walking skeleton 完成後に反復手順を記録します。
-
-- [ ] 公共施設コンポーネントの vendor 手順
-- [ ] SDK geo クエリの実機実証手順
-- [ ] CI / デプロイ手順
+W2/W3 用の切り出し手順・トラブルシューティングは [docs/playbook.md](docs/playbook.md) を参照してください。
 
 ## ライセンス
 
