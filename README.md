@@ -1,5 +1,7 @@
 # GeonicDB サンプル: 公共施設マップ
 
+**ライブデモ**: https://geolonia.github.io/geonicdb-sample-public-facility/
+
 [@geolonia/geonicdb-sdk](https://www.npmjs.com/package/@geolonia/geonicdb-sdk) と [Geolonia Maps](https://geolonia.com/) を使って、公共施設のオープンデータを地図上に可視化するサンプルアプリケーションです。
 
 GeonicDB（NGSI-LD 対応 Context Broker）に登録した公共施設エンティティを取得し、リスト表示と地図ピン表示を組み合わせた UI を提供します。
