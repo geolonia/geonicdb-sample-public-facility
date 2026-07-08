@@ -27,6 +27,7 @@ jobs:
           VITE_GEOLONIA_API_KEY: YOUR-API-KEY
           VITE_DEMO_MODE: "true"
           VITE_BASE: /${{ github.event.repository.name }}/
+          VITE_GEONICDB_URL: ${{ vars.GEONICDB_URL || 'https://demo.geonicdb.com/api' }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

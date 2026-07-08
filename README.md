@@ -22,16 +22,26 @@ npm run dev
 
 | 変数名 | 説明 |
 |---|---|
-| `VITE_GEONICDB_URL` | GeonicDB エンドポイント URL |
+| `VITE_GEONICDB_URL` | GeonicDB エンドポイント URL（末尾スラッシュなし） |
 | `VITE_GEOLONIA_API_KEY` | Geolonia Maps API キー（`YOUR-API-KEY` を自分のキーに置き換えてください） |
 
 Geolonia Maps の API キーは [Geolonia Dashboard](https://geolonia.com/) から取得してください。
+
+### GitHub Pages へのデプロイ（fork 利用者向け）
+
+このリポジトリを fork して GitHub Pages にデプロイする場合、リポジトリの **Settings → Secrets and variables → Actions → Variables** に `GEONICDB_URL` を追加してください。
+
+```
+GEONICDB_URL = https://your-geonicdb-instance/api
+```
+
+設定しない場合は公開デモ環境（`https://demo.geonicdb.com/api`）をデフォルト値として使用します。
 
 ### 環境変数ファイルの使い分け
 
 | ファイル | 用途 | git 管理 |
 |---|---|---|
-| `.env.example` | キー一覧テンプレート（値なし） | 追跡あり |
+| `.env.example` | キー一覧テンプレート | 追跡あり |
 | `.env.local` | ローカル開発用オーバーライド | 追跡なし |
 | `.env.production` | 本番ビルド用 | 追跡なし |
 
