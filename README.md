@@ -31,7 +31,7 @@ Geolonia Maps の API キーは [Geolonia Dashboard](https://geolonia.com/) か�
 
 このリポジトリを fork して GitHub Pages にデプロイする場合、リポジトリの **Settings → Secrets and variables → Actions → Variables** に `GEONICDB_URL` を追加してください。
 
-```
+```text
 GEONICDB_URL = https://your-geonicdb-instance/api
 ```
 
