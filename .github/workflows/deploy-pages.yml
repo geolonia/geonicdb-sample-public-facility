@@ -24,7 +24,10 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          VITE_GEOLONIA_API_KEY: YOUR-API-KEY
+          # 実地図タイル表示には geolonia.github.io を許可した Geolonia Maps キーが要る。
+          # リポジトリ変数 GEOLONIA_API_KEY を設定すれば実キーで配信、未設定なら
+          # プレースホルダ(施設ピンは描画されるがベース地図タイルは表示されない)。
+          VITE_GEOLONIA_API_KEY: ${{ vars.GEOLONIA_API_KEY || 'YOUR-API-KEY' }}
           VITE_DEMO_MODE: "true"
           VITE_BASE: /${{ github.event.repository.name }}/
           VITE_GEONICDB_URL: ${{ vars.GEONICDB_URL || 'https://geonicdb.geolonia.com' }}
