@@ -3,7 +3,10 @@ import { NgsiV2Client, type NgsiV2Entity } from '@geolonia/geonicdb-sdk/ngsi-v2'
 import type { GeoJsonPoint } from '../lib/geo-types';
 
 const baseUrl = (import.meta.env.VITE_GEONICDB_URL as string ?? '').replace(/\/+$/, '');
-const client = new NgsiV2Client({ baseUrl });
+const client = new NgsiV2Client({
+  baseUrl,
+  service: import.meta.env.VITE_GEONICDB_TENANT as string | undefined,
+});
 
 export interface PublicFacilityEntity extends NgsiV2Entity {
   location?: { type: 'geo:json'; value: GeoJsonPoint };
