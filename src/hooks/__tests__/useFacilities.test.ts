@@ -92,6 +92,6 @@ describe('useFacilities', () => {
   });
 
   it('E: NgsiV2Client が service (tenant) オプションで初期化される', () => {
-    expect(initialClientConfig).toHaveProperty('service');
+    expect(initialClientConfig?.service).toBe(import.meta.env.VITE_GEONICDB_TENANT);
   });
 });

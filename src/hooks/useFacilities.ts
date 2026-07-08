@@ -3,6 +3,9 @@ import { NgsiV2Client, type NgsiV2Entity } from '@geolonia/geonicdb-sdk/ngsi-v2'
 import type { GeoJsonPoint } from '../lib/geo-types';
 
 const baseUrl = (import.meta.env.VITE_GEONICDB_URL as string ?? '').replace(/\/+$/, '');
+if (!baseUrl || !import.meta.env.VITE_GEONICDB_TENANT) {
+  console.warn('[useFacilities] VITE_GEONICDB_URL / VITE_GEONICDB_TENANT が未設定です。施設データが取得できない可能性があります。');
+}
 const client = new NgsiV2Client({
   baseUrl,
   service: import.meta.env.VITE_GEONICDB_TENANT as string | undefined,
