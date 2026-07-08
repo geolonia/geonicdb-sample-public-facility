@@ -3,11 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GeonicDB Template App</title>
+    <title>公共施設マップ — GeonicDB サンプル</title>
+    <!--
+      Geolonia Maps API キーを @geolonia/embed(npm)の keyring に渡す器。
+      embed の keyring は `geolonia-api-key` クエリを持つ <script> タグの src から
+      キーを読み取る。地図クラス(Map/Marker)自体は npm パッケージから import するため
+      ここでは embed バンドルを読み込まず、キー供給のみを行う。
+      src は「ルート絶対パスの実在 JS ファイル」(public/geolonia-key.js)にする
+      (相対 src だと SPA サブルート直リンク時に index.html が返り MIME エラーになる)。
+    -->
+    <script src="/geolonia-key.js?geolonia-api-key=%VITE_GEOLONIA_API_KEY%"></script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script type="text/javascript" src="https://cdn.geolonia.com/v1/embed?geolonia-api-key=YOUR-API-KEY"></script>
   </body>
 </html>
