@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { renderHook, act, waitFor } from '@testing-library/react';
+import { NgsiV2Client } from '@geolonia/geonicdb-sdk/ngsi-v2';
 
 const { mockGetEntities } = vi.hoisted(() => ({
   mockGetEntities: vi.fn(),
@@ -12,6 +13,8 @@ vi.mock('@geolonia/geonicdb-sdk/ngsi-v2', () => ({
 }));
 
 const { useFacilities } = await import('../useFacilities');
+// beforeEach の clearAllMocks でクリアされる前に constructor 引数を保存
+const initialClientConfig = vi.mocked(NgsiV2Client).mock.calls[0]?.[0];
 
 describe('useFacilities', () => {
   beforeEach(() => {
@@ -86,5 +89,9 @@ describe('useFacilities', () => {
 
     expect(result.current.error).toBe('Network error');
     expect(result.current.facilities).toEqual([]);
+  });
+
+  it('E: NgsiV2Client が service (tenant) オプションで初期化される', () => {
+    expect(initialClientConfig?.service).toBe(import.meta.env.VITE_GEONICDB_TENANT);
   });
 });
