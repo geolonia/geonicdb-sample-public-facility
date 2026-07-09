@@ -33,7 +33,7 @@ export function useFacilities(type = 'PublicFacility') {
       // SDK 0.14.0+ で georel/geometry/coords をネイティブサポート
       const data = await client.getEntities({
         type,
-        limit: 100,
+        limit: 1000,
         ...(geoParams && {
           georel: geoParams.georel,
           geometry: geoParams.geometry as 'point' | 'line' | 'polygon' | 'box',
