@@ -64,85 +64,82 @@ export function FacilityDetail({ facility, onClose }: FacilityDetailProps) {
   const extraAttributes = getExtraAttributes(facility);
 
   return (
-    <div className="absolute bottom-4 left-4 right-4 md:left-auto md:right-4 md:top-4 md:bottom-auto md:w-80 bg-white rounded-lg shadow-lg border border-gray-200 z-10 max-h-[70vh] overflow-y-auto">
+    <div className="facility-detail-panel">
       {/* Header */}
-      <div className="flex items-start justify-between p-4 pb-2">
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
-            <span className={`shrink-0 px-1.5 py-0.5 rounded text-[10px] font-medium ${colors.bg} ${colors.text}`}>
+      <div className="facility-detail-header">
+        <div className="facility-detail-name-block">
+          <div className="facility-detail-type-row">
+            <span
+              className="facility-badge"
+              style={{ backgroundColor: colors.bg, color: colors.text }}
+            >
               {facility.facilityType}
             </span>
           </div>
-          <h3 className="text-sm font-bold text-gray-800">{facility.name}</h3>
+          <p className="facility-detail-name">{facility.name}</p>
           {facility.nameKana && (
-            <p className="text-[10px] text-gray-400 mt-0.5">{facility.nameKana}</p>
+            <p className="facility-detail-kana">{facility.nameKana}</p>
           )}
         </div>
-        <button
-          onClick={onClose}
-          className="shrink-0 p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded transition-colors"
-        >
-          <X className="w-4 h-4" />
+        <button onClick={onClose} className="facility-detail-close-btn">
+          <X style={{ width: 16, height: 16 }} />
         </button>
       </div>
 
       {/* Info */}
-      <div className="px-4 pb-3 space-y-2">
+      <div className="facility-detail-info">
         {facility.postalCode && (
-          <div className="flex items-center gap-2 text-xs text-gray-600">
-            <Mail className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+          <div className="facility-detail-row">
+            <Mail className="facility-detail-row-icon" />
             <span>〒{formatPostalCode(facility.postalCode)}</span>
           </div>
         )}
         {facility.address && (
-          <div className="flex items-start gap-2 text-xs text-gray-600">
-            <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0 mt-0.5" />
+          <div className="facility-detail-row">
+            <MapPin className="facility-detail-row-icon" />
             <span>{facility.address}</span>
           </div>
         )}
         {facility.municipality && (
-          <div className="flex items-center gap-2 text-xs text-gray-600">
-            <Building2 className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+          <div className="facility-detail-row">
+            <Building2 className="facility-detail-row-icon" />
             <span>{facility.municipality}</span>
           </div>
         )}
         {facility.phone && (
-          <div className="flex items-center gap-2 text-xs text-gray-600">
-            <Phone className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+          <div className="facility-detail-row">
+            <Phone className="facility-detail-row-icon" />
             <span>{facility.phone}</span>
           </div>
         )}
         {hours && (
-          <div className="flex items-center gap-2 text-xs text-gray-600">
-            <Clock className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+          <div className="facility-detail-row">
+            <Clock className="facility-detail-row-icon" />
             <span>{hours}</span>
           </div>
         )}
         {facility.openDays && (
-          <div className="flex items-center gap-2 text-xs text-gray-600">
-            <Calendar className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+          <div className="facility-detail-row">
+            <Calendar className="facility-detail-row-icon" />
             <span>{facility.openDays}</span>
           </div>
         )}
         {facility.openTimeNote && (
-          <div className="flex items-start gap-2 text-xs text-gray-500">
-            <Clock className="w-3.5 h-3.5 text-gray-300 shrink-0 mt-0.5" />
-            <span className="italic">{facility.openTimeNote}</span>
+          <div className="facility-detail-row" style={{ color: 'var(--color-text-dim)' }}>
+            <Clock className="facility-detail-row-icon" style={{ opacity: 0.5 }} />
+            <span style={{ fontStyle: 'italic' }}>{facility.openTimeNote}</span>
           </div>
         )}
       </div>
 
       {/* Accessibility */}
       {accessibilityEntries.length > 0 && (
-        <div className="px-4 pb-3 pt-2 border-t border-gray-100">
-          <h4 className="text-[10px] font-medium text-gray-400 mb-2">バリアフリー対応</h4>
-          <div className="flex flex-wrap gap-1.5">
+        <div className="facility-detail-section">
+          <p className="facility-detail-section-title">バリアフリー対応</p>
+          <div className="facility-detail-badges">
             {accessibilityEntries.map(({ key, label, icon: Icon }) => (
-              <span
-                key={key}
-                className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-[10px]"
-              >
-                <Icon className="w-3 h-3" />
+              <span key={key} className="accessibility-badge">
+                <Icon style={{ width: 12, height: 12 }} />
                 {label}
               </span>
             ))}
@@ -152,21 +149,21 @@ export function FacilityDetail({ facility, onClose }: FacilityDetailProps) {
 
       {/* Description */}
       {facility.description && (
-        <div className="px-4 pb-3 pt-2 border-t border-gray-100">
-          <p className="text-xs text-gray-500 leading-relaxed">{facility.description}</p>
+        <div className="facility-detail-section">
+          <p className="facility-detail-description">{facility.description}</p>
         </div>
       )}
 
       {/* Website link */}
       {facility.websiteUrl && (
-        <div className="px-4 pb-3 pt-2 border-t border-gray-100">
+        <div className="facility-detail-section">
           <a
             href={facility.websiteUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-xs text-brand-600 hover:text-brand-700 transition-colors"
+            className="facility-detail-link"
           >
-            <ExternalLink className="w-3 h-3" />
+            <ExternalLink style={{ width: 12, height: 12 }} />
             Webサイト
           </a>
         </div>
@@ -174,18 +171,18 @@ export function FacilityDetail({ facility, onClose }: FacilityDetailProps) {
 
       {/* Extra attributes (not mapped into PublicFacility type) */}
       {extraAttributes.length > 0 && (
-        <div className="px-4 pb-4 pt-2 border-t border-gray-100">
-          <h4 className="text-[10px] font-medium text-gray-400 mb-2 flex items-center gap-1">
-            <Database className="w-3 h-3" />
+        <div className="facility-detail-section">
+          <p className="facility-detail-section-title">
+            <Database style={{ width: 12, height: 12 }} />
             その他の属性
-          </h4>
-          <dl className="space-y-1.5">
+          </p>
+          <dl className="facility-extra-attrs">
             {extraAttributes.map(({ key, type, value }) => (
-              <div key={key} className="flex items-baseline gap-2">
-                <dt className="text-[10px] font-mono text-gray-500 shrink-0">{key}</dt>
-                <dd className="text-[10px] text-gray-700 break-all">
+              <div key={key} className="facility-extra-attr-row">
+                <dt className="facility-extra-attr-key">{key}</dt>
+                <dd className="facility-extra-attr-val">
                   {formatAttrValue(value)}
-                  <span className="ml-1 text-gray-300">({type})</span>
+                  <span className="facility-extra-attr-type">({type})</span>
                 </dd>
               </div>
             ))}

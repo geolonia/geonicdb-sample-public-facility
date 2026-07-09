@@ -75,102 +75,90 @@ export function FacilityList({ facilities, selectedId, onSelect }: FacilityListP
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="facility-list-root">
       {/* Search */}
-      <div className="px-4 pt-4 pb-2">
-        <div className="relative">
-          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
+      <div className="facility-list-search">
+        <div className="facility-search-wrapper">
+          <Search className="facility-search-icon" />
           <input
             type="text"
             data-testid="facility-search-input"
             placeholder="施設名・住所で検索"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            className="w-full pl-8 pr-3 py-1.5 text-xs border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-brand-400"
+            className="facility-search-input"
           />
         </div>
       </div>
 
       {/* Type filter */}
-      <div className="px-4 pb-2 flex gap-1 flex-wrap">
+      <div className="facility-filter-row">
         <button
           data-testid="facility-filter-all"
           onClick={() => setTypeFilter('all')}
-          className={`px-2 py-0.5 rounded-full text-[10px] font-medium transition-colors ${
-            typeFilter === 'all'
-              ? 'bg-brand-100 text-brand-700'
-              : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-          }`}
+          className={`filter-chip${typeFilter === 'all' ? ' active' : ''}`}
         >
           すべて
-          <span className="ml-1 opacity-60">{facilities.length}</span>
+          <span style={{ marginLeft: 4, opacity: 0.6 }}>{facilities.length}</span>
         </button>
         {typeCounts.map(({ type, count }) => {
           const colors = FACILITY_CATEGORY_COLORS[type] ?? FACILITY_CATEGORY_COLORS['その他'];
+          const isActive = typeFilter === type;
           return (
             <button
               key={type}
               onClick={() => setTypeFilter(type)}
-              className={`px-2 py-0.5 rounded-full text-[10px] font-medium transition-colors ${
-                typeFilter === type
-                  ? `${colors.bg} ${colors.text}`
-                  : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-              }`}
+              className="filter-chip"
+              style={isActive ? { backgroundColor: colors.bg, color: colors.text } : undefined}
             >
               {type}
-              <span className="ml-1 opacity-60">{count}</span>
+              <span style={{ marginLeft: 4, opacity: 0.6 }}>{count}</span>
             </button>
           );
         })}
       </div>
 
       {/* Accessibility & open now filters */}
-      <div className="px-4 pb-3 flex gap-1.5 flex-wrap">
+      <div className="facility-filter-row-2">
         <button
           onClick={() => toggleAccessibility('wheelchair')}
-          className={`px-2 py-0.5 rounded text-[10px] font-medium transition-colors ${
-            accessibilityFilters.has('wheelchair')
-              ? 'bg-blue-100 text-blue-700'
-              : 'bg-gray-50 text-gray-400 hover:bg-gray-100'
-          }`}
+          className={`filter-chip-sq${accessibilityFilters.has('wheelchair') ? ' active' : ''}`}
         >
           車椅子
         </button>
         <button
           onClick={() => toggleAccessibility('nursingRoom')}
-          className={`px-2 py-0.5 rounded text-[10px] font-medium transition-colors ${
-            accessibilityFilters.has('nursingRoom')
-              ? 'bg-pink-100 text-pink-700'
-              : 'bg-gray-50 text-gray-400 hover:bg-gray-100'
-          }`}
+          className={`filter-chip-sq${accessibilityFilters.has('nursingRoom') ? ' active' : ''}`}
         >
           授乳室
         </button>
         <button
           onClick={() => setOpenNowFilter((v) => !v)}
-          className={`flex items-center gap-0.5 px-2 py-0.5 rounded text-[10px] font-medium transition-colors ${
-            openNowFilter
-              ? 'bg-green-100 text-green-700'
-              : 'bg-gray-50 text-gray-400 hover:bg-gray-100'
-          }`}
+          className={`filter-chip-sq${openNowFilter ? ' active' : ''}`}
         >
-          <Clock className="w-2.5 h-2.5" />
+          <Clock style={{ width: 10, height: 10 }} />
           営業中
         </button>
       </div>
 
       {/* Results count */}
-      <div className="px-4 pb-2">
-        <span data-testid="facility-count" data-count={filteredFacilities.length} className="text-[10px] text-gray-400">
+      <div className="facility-count-row">
+        <span
+          data-testid="facility-count"
+          data-count={filteredFacilities.length}
+          className="facility-count-text"
+        >
           {filteredFacilities.length}件
           {filteredFacilities.length !== facilities.length && ` / 全${facilities.length}件`}
         </span>
       </div>
 
       {/* List */}
-      <div className="flex-1 overflow-y-auto px-4 pb-4 space-y-2">
+      <div className="facility-list-scroll">
         {filteredFacilities.length === 0 ? (
-          <p data-testid="facility-no-results" className="text-xs text-gray-400 text-center py-4">該当する施設がありません</p>
+          <p data-testid="facility-no-results" className="facility-no-results">
+            該当する施設がありません
+          </p>
         ) : (
           filteredFacilities.map((facility) => (
             <FacilityCard

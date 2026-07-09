@@ -73,8 +73,8 @@ describe('FacilityCard', () => {
   it('applies selected styling', () => {
     render(<FacilityCard facility={makeFacility()} selected />);
     const card = screen.getByText('板橋区立中央図書館').closest('[id]')!;
-    expect(card.className).toContain('border-brand-400');
-    expect(card.className).toContain('ring-2');
+    expect(card.className).toContain('facility-card');
+    expect(card.className).toContain('selected');
   });
 
   it('renders website link when URL present', () => {
