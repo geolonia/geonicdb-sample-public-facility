@@ -49,8 +49,8 @@ describe('FacilityList', () => {
     render(
       <FacilityList
         facilities={facilities}
-        selectedFacilityId={null}
-        onFacilityClick={vi.fn()}
+        selectedId={null}
+        onSelect={vi.fn()}
       />,
     );
 
@@ -64,8 +64,8 @@ describe('FacilityList', () => {
     render(
       <FacilityList
         facilities={facilities}
-        selectedFacilityId={null}
-        onFacilityClick={vi.fn()}
+        selectedId={null}
+        onSelect={vi.fn()}
       />,
     );
 
@@ -76,8 +76,8 @@ describe('FacilityList', () => {
     render(
       <FacilityList
         facilities={facilities}
-        selectedFacilityId={null}
-        onFacilityClick={vi.fn()}
+        selectedId={null}
+        onSelect={vi.fn()}
       />,
     );
 
@@ -90,8 +90,8 @@ describe('FacilityList', () => {
     render(
       <FacilityList
         facilities={facilities}
-        selectedFacilityId={null}
-        onFacilityClick={vi.fn()}
+        selectedId={null}
+        onSelect={vi.fn()}
       />,
     );
 
@@ -108,8 +108,8 @@ describe('FacilityList', () => {
     render(
       <FacilityList
         facilities={facilities}
-        selectedFacilityId={null}
-        onFacilityClick={vi.fn()}
+        selectedId={null}
+        onSelect={vi.fn()}
       />,
     );
 
@@ -126,8 +126,8 @@ describe('FacilityList', () => {
     render(
       <FacilityList
         facilities={facilities}
-        selectedFacilityId={null}
-        onFacilityClick={vi.fn()}
+        selectedId={null}
+        onSelect={vi.fn()}
       />,
     );
 
@@ -137,29 +137,27 @@ describe('FacilityList', () => {
     expect(screen.getByTestId('facility-no-results')).toBeDefined();
   });
 
-  it('calls onFacilityClick when card is clicked', () => {
-    const onClick = vi.fn();
+  it('calls onSelect with facility id when card is clicked', () => {
+    const onSelect = vi.fn();
     render(
       <FacilityList
         facilities={facilities}
-        selectedFacilityId={null}
-        onFacilityClick={onClick}
+        selectedId={null}
+        onSelect={onSelect}
       />,
     );
 
     fireEvent.click(screen.getByText('中央図書館'));
 
-    expect(onClick).toHaveBeenCalledWith(
-      expect.objectContaining({ id: 'f1', name: '中央図書館' }),
-    );
+    expect(onSelect).toHaveBeenCalledWith('f1');
   });
 
   it('searches by address', () => {
     render(
       <FacilityList
         facilities={facilities}
-        selectedFacilityId={null}
-        onFacilityClick={vi.fn()}
+        selectedId={null}
+        onSelect={vi.fn()}
       />,
     );
 
@@ -174,8 +172,8 @@ describe('FacilityList', () => {
     render(
       <FacilityList
         facilities={facilities}
-        selectedFacilityId={null}
-        onFacilityClick={vi.fn()}
+        selectedId={null}
+        onSelect={vi.fn()}
       />,
     );
 

@@ -25,9 +25,15 @@ describe('App', () => {
     expect(screen.getByTestId('facility-search-input')).toBeDefined()
   })
 
-  it('renders view tab buttons', () => {
+  it('renders MapSidebarLayout with mobile FAB for list', () => {
     render(<App />)
-    expect(screen.getByRole('button', { name: 'リスト' })).toBeDefined()
-    expect(screen.getByRole('button', { name: '地図' })).toBeDefined()
+    // mobile FAB button (hidden on desktop via CSS, always rendered)
+    expect(screen.getByRole('button', { name: 'リスト表示' })).toBeDefined()
+  })
+
+  it('renders both list and map simultaneously (no tab switching)', () => {
+    render(<App />)
+    expect(screen.getByTestId('facility-search-input')).toBeDefined()
+    expect(screen.getByTestId('facility-map-view')).toBeDefined()
   })
 })

@@ -10,14 +10,14 @@ import { FacilityCard } from './FacilityCard';
 
 interface FacilityListProps {
   facilities: PublicFacility[];
-  selectedFacilityId: string | null;
-  onFacilityClick: (facility: PublicFacility) => void;
+  selectedId?: string | null;
+  onSelect?: (id: string) => void;
 }
 
 /** Accessibility filter keys */
 type AccessibilityFilter = 'wheelchair' | 'nursingRoom';
 
-export function FacilityList({ facilities, selectedFacilityId, onFacilityClick }: FacilityListProps) {
+export function FacilityList({ facilities, selectedId, onSelect }: FacilityListProps) {
   const [searchText, setSearchText] = useState('');
   const [typeFilter, setTypeFilter] = useState<FacilityCategory | 'all'>('all');
   const [accessibilityFilters, setAccessibilityFilters] = useState<Set<AccessibilityFilter>>(new Set());
@@ -176,8 +176,8 @@ export function FacilityList({ facilities, selectedFacilityId, onFacilityClick }
             <FacilityCard
               key={facility.id}
               facility={facility}
-              selected={selectedFacilityId === facility.id}
-              onClick={onFacilityClick}
+              selected={selectedId === facility.id}
+              onClick={(f) => onSelect?.(f.id)}
             />
           ))
         )}
