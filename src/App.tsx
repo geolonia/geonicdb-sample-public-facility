@@ -5,6 +5,7 @@ import type { PublicFacility } from './types/public-facility'
 import { FacilityList } from './components/public-facility/FacilityList'
 import { FacilityMapView } from './components/map/FacilityMapView'
 import { FacilityDetail } from './components/public-facility/FacilityDetail'
+import { Attribution } from './components/Attribution'
 import './App.css'
 
 type View = 'list' | 'map'
@@ -76,6 +77,9 @@ function App() {
           </div>
         )}
       </main>
+      <footer>
+        <Attribution />
+      </footer>
     </div>
   )
 }

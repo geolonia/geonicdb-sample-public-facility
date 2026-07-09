@@ -40,7 +40,7 @@ describe('useFacilities', () => {
     expect(mockGetEntities).toHaveBeenCalledWith(
       expect.objectContaining({
         type: 'PublicFacility',
-        limit: 100,
+        limit: 1000,
         georel: 'near;maxDistance:1000',
         geometry: 'point',
         coords: '35.6,139.7',
@@ -76,7 +76,7 @@ describe('useFacilities', () => {
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     const lastCall = mockGetEntities.mock.calls[mockGetEntities.mock.calls.length - 1][0];
-    expect(lastCall).toMatchObject({ type: 'PublicFacility', limit: 100 });
+    expect(lastCall).toMatchObject({ type: 'PublicFacility', limit: 1000 });
     expect(lastCall).not.toHaveProperty('georel');
     expect(result.current.facilities).toEqual(entities);
   });
