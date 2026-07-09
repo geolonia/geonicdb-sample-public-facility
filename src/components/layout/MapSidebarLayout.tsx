@@ -24,12 +24,18 @@ export function MapSidebarLayout({
   const [leftOpen, setLeftOpen] = useState(false);
   const [rightOpen, setRightOpen] = useState(false);
 
-  const allSidebars = [sidebar, secondarySidebar].filter(
-    (s): s is SidebarConfig => s != null
+  // Apply default positions before splitting: sidebar→'left', secondarySidebar→'right'
+  const sidebarWithDefault = sidebar
+    ? { ...sidebar, position: sidebar.position ?? ('left' as const) }
+    : undefined;
+  const secondarySidebarWithDefault = secondarySidebar
+    ? { ...secondarySidebar, position: secondarySidebar.position ?? ('right' as const) }
+    : undefined;
+
+  const allSidebars = [sidebarWithDefault, secondarySidebarWithDefault].filter(
+    (s): s is SidebarConfig & { position: 'left' | 'right' } => s != null
   );
-  const leftSidebar = allSidebars.find(
-    (s) => s.position === 'left' || s.position == null
-  );
+  const leftSidebar = allSidebars.find((s) => s.position === 'left');
   const rightSidebar = allSidebars.find((s) => s.position === 'right');
 
   return (

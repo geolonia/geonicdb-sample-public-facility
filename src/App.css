@@ -8,6 +8,14 @@
   --color-primary-hover: #00f0c0;
   --color-danger: #ff4d6a;
   --color-danger-hover: #ff6b84;
+  /* Light UI colors */
+  --color-white: #fff;
+  --color-bg-subtle: #f9fafb;
+  --color-border-light: #e5e7eb;
+  --color-text-base: #111827;
+  --color-text-muted: #6b7280;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
 }
 
 * {
@@ -18,8 +26,8 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #f9fafb;
-  color: #111827;
+  background: var(--color-bg-subtle);
+  color: var(--color-text-base);
   line-height: 1.6;
 }
 
@@ -35,15 +43,15 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 0.75rem 1rem;
-  background: #fff;
-  border-bottom: 1px solid #e5e7eb;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border-light);
   flex-shrink: 0;
 }
 
 .app-title {
   font-size: 1rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-text-base);
   margin-right: auto;
 }
 
@@ -55,18 +63,18 @@ body {
 .tab-btn {
   padding: 0.35rem 0.9rem;
   border-radius: 6px;
-  border: 1px solid #e5e7eb;
-  background: #fff;
+  border: 1px solid var(--color-border-light);
+  background: var(--color-white);
   font-size: 0.8rem;
   cursor: pointer;
-  color: #6b7280;
+  color: var(--color-text-muted);
   transition: all 0.15s;
 }
 
 .tab-btn.active {
-  background: #3b82f6;
-  border-color: #3b82f6;
-  color: #fff;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
 }
 
 .status-loading {
@@ -111,7 +119,7 @@ body {
   flex-direction: column;
   flex-shrink: 0;
   overflow-y: auto;
-  background: #fff;
+  background: var(--color-white);
 }
 
 @media (min-width: 768px) {
@@ -121,12 +129,12 @@ body {
 }
 
 .map-sidebar-desktop--left {
-  border-right: 1px solid #e5e7eb;
+  border-right: 1px solid var(--color-border-light);
 }
 
 .map-sidebar-desktop--right {
-  border-left: 1px solid #e5e7eb;
-  background: #f9fafb;
+  border-left: 1px solid var(--color-border-light);
+  background: var(--color-bg-subtle);
 }
 
 .map-sidebar-main {
@@ -149,8 +157,8 @@ body {
   padding: 0.75rem;
   border-radius: 50%;
   border: none;
-  background: #3b82f6;
-  color: #fff;
+  background: var(--color-accent);
+  color: var(--color-white);
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   cursor: pointer;
   z-index: 30;
@@ -158,7 +166,7 @@ body {
 }
 
 .map-sidebar-fab:hover {
-  background: #2563eb;
+  background: var(--color-accent-hover);
 }
 
 .map-sidebar-fab--left {

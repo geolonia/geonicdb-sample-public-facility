@@ -33,8 +33,32 @@ export function Drawer({ children, position = 'left', width = '20rem', ariaLabel
   }, []);
 
   useEffect(() => {
+    const FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') {
+        onClose();
+        return;
+      }
+      if (e.key === 'Tab') {
+        const focusableElements = Array.from(
+          drawerRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? []
+        );
+        if (focusableElements.length === 0) return;
+        const first = focusableElements[0];
+        const last = focusableElements[focusableElements.length - 1];
+        const active = document.activeElement;
+        if (e.shiftKey) {
+          if (active === first || active === drawerRef.current) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (active === last || active === drawerRef.current) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
     };
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);

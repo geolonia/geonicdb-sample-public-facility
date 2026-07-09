@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useGeonicDbMap, geolonia } from './GeonicDbMap';
 import type { PublicFacility } from '../../types/public-facility';
 import { FACILITY_CATEGORY_COLORS, SPRITE_URL } from '../../types/public-facility';
@@ -218,12 +218,14 @@ export function FacilityMapView({
     };
   }, [map, mapLoaded, spriteReady, facilities, handleLayerClick, handleMouseEnter, handleMouseLeave]);
 
-  // Keep lookup ref in sync with facilities (independent of map readiness for flyTo)
-  useEffect(() => {
+  // Build lookup synchronously via useMemo so flyTo always sees the latest facilities
+  const facilityLookup = useMemo(() => {
     const lookup = new Map<string, PublicFacility>();
     for (const f of facilities) lookup.set(f.id, f);
-    facilityLookupRef.current = lookup;
+    return lookup;
   }, [facilities]);
+  // Update ref before effects run (safe to assign a ref during render)
+  facilityLookupRef.current = facilityLookup;
 
   // Update GeoJSON data when facilities change
   useEffect(() => {
