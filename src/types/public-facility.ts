@@ -57,22 +57,26 @@ export const SPRITE_COORDS: Record<string, { x: number; y: number; w: number; h:
 
 /** Category display colors and sprite icon for badges and markers */
 export const FACILITY_CATEGORY_COLORS: Record<FacilityCategory, {
-  bg: string; text: string; marker: string;
+  /** CSS background-color value (not a Tailwind class) */
+  bg: string;
+  /** CSS color value (not a Tailwind class) */
+  text: string;
+  marker: string;
   /** Sprite icon name from geolonia/custom-smartmap-sprite */
   spriteIcon: string;
 }> = {
-  '図書館':    { bg: 'bg-blue-100',   text: 'text-blue-700',   marker: '#3b82f6',  spriteIcon: 'library' },
-  '体育館':    { bg: 'bg-green-100',  text: 'text-green-700',  marker: '#22c55e',  spriteIcon: 'sports' },
-  '公民館':    { bg: 'bg-purple-100', text: 'text-purple-700', marker: '#a855f7',  spriteIcon: 'public-facility-navy' },
-  '区民事務所': { bg: 'bg-red-100',    text: 'text-red-700',    marker: '#ef4444',  spriteIcon: 'public-facility-red' },
-  '児童館':    { bg: 'bg-orange-100', text: 'text-orange-700', marker: '#f97316',  spriteIcon: 'daycare' },
-  '集会所':    { bg: 'bg-teal-100',   text: 'text-teal-700',   marker: '#14b8a6',  spriteIcon: 'public-facility-navy' },
-  '福祉施設':  { bg: 'bg-pink-100',   text: 'text-pink-700',   marker: '#ec4899',  spriteIcon: 'welfare-facility' },
-  '子育て施設': { bg: 'bg-amber-100',  text: 'text-amber-700',  marker: '#f59e0b',  spriteIcon: 'baby' },
-  'ホール':    { bg: 'bg-indigo-100', text: 'text-indigo-700', marker: '#6366f1',  spriteIcon: 'museums' },
-  '学校':      { bg: 'bg-cyan-100',   text: 'text-cyan-700',   marker: '#06b6d4',  spriteIcon: 'preschool' },
-  '公園':      { bg: 'bg-lime-100',   text: 'text-lime-700',   marker: '#84cc16',  spriteIcon: 'park' },
-  'その他':    { bg: 'bg-gray-100',   text: 'text-gray-700',   marker: '#6b7280',  spriteIcon: 'public-facility-navy' },
+  '図書館':    { bg: 'rgba(59,130,246,0.18)',   text: '#60a5fa',  marker: '#3b82f6',  spriteIcon: 'library' },
+  '体育館':    { bg: 'rgba(34,197,94,0.18)',    text: '#4ade80',  marker: '#22c55e',  spriteIcon: 'sports' },
+  '公民館':    { bg: 'rgba(168,85,247,0.18)',   text: '#c084fc',  marker: '#a855f7',  spriteIcon: 'public-facility-navy' },
+  '区民事務所': { bg: 'rgba(239,68,68,0.18)',    text: '#f87171',  marker: '#ef4444',  spriteIcon: 'public-facility-red' },
+  '児童館':    { bg: 'rgba(249,115,22,0.18)',   text: '#fb923c',  marker: '#f97316',  spriteIcon: 'daycare' },
+  '集会所':    { bg: 'rgba(20,184,166,0.18)',   text: '#2dd4bf',  marker: '#14b8a6',  spriteIcon: 'public-facility-navy' },
+  '福祉施設':  { bg: 'rgba(236,72,153,0.18)',   text: '#f472b6',  marker: '#ec4899',  spriteIcon: 'welfare-facility' },
+  '子育て施設': { bg: 'rgba(245,158,11,0.18)',   text: '#fbbf24',  marker: '#f59e0b',  spriteIcon: 'baby' },
+  'ホール':    { bg: 'rgba(99,102,241,0.18)',   text: '#818cf8',  marker: '#6366f1',  spriteIcon: 'museums' },
+  '学校':      { bg: 'rgba(6,182,212,0.18)',    text: '#22d3ee',  marker: '#06b6d4',  spriteIcon: 'preschool' },
+  '公園':      { bg: 'rgba(132,204,22,0.18)',   text: '#a3e635',  marker: '#84cc16',  spriteIcon: 'park' },
+  'その他':    { bg: 'rgba(107,114,128,0.18)',  text: '#9ca3af',  marker: '#6b7280',  spriteIcon: 'public-facility-navy' },
 };
 
 // ============================================================================
