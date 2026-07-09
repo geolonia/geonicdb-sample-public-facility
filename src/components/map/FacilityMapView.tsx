@@ -224,8 +224,9 @@ export function FacilityMapView({
     for (const f of facilities) lookup.set(f.id, f);
     return lookup;
   }, [facilities]);
-  // Update ref before effects run (safe to assign a ref during render)
-  facilityLookupRef.current = facilityLookup;
+  useEffect(() => {
+    facilityLookupRef.current = facilityLookup;
+  }, [facilityLookup]);
 
   // Update GeoJSON data when facilities change
   useEffect(() => {
