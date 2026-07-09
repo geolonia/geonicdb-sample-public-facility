@@ -84,8 +84,7 @@ describe('FacilityMapView init', () => {
       <FacilityMapView
         facilities={[]}
         selectedFacilityId={null}
-        flyToTarget={null}
-        onFacilityClick={() => {}}
+        onSelect={() => {}}
       />,
     );
     // container div (data-lang="ja") が描画される
@@ -99,8 +98,7 @@ describe('FacilityMapView init', () => {
       <FacilityMapView
         facilities={[]}
         selectedFacilityId={null}
-        flyToTarget={null}
-        onFacilityClick={() => {}}
+        onSelect={() => {}}
       />,
     );
     const mapDiv = container.querySelector('[data-lang="ja"]') as HTMLElement | null;

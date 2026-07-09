@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useGeonicDbMap, geolonia } from './GeonicDbMap';
 import type { PublicFacility } from '../../types/public-facility';
 import { FACILITY_CATEGORY_COLORS, SPRITE_URL } from '../../types/public-facility';
@@ -32,8 +32,7 @@ const ICON_IMAGE_EXPR = ['concat', `${SPRITE_ID}:`, ['get', 'spriteIcon']] as An
 interface FacilityMapViewProps {
   facilities: PublicFacility[];
   selectedFacilityId: string | null;
-  flyToTarget: [number, number] | null;
-  onFacilityClick: (facility: PublicFacility) => void;
+  onSelect?: (id: string) => void;
 }
 
 /** Convert facilities to GeoJSON FeatureCollection */
@@ -60,8 +59,7 @@ function toGeoJson(facilities: PublicFacility[]): GeoJsonFeatureCollection {
 export function FacilityMapView({
   facilities,
   selectedFacilityId,
-  flyToTarget,
-  onFacilityClick,
+  onSelect,
 }: FacilityMapViewProps) {
   const { containerRef, map, initMap, flyTo } = useGeonicDbMap();
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -79,11 +77,12 @@ export function FacilityMapView({
     return () => { m.off('load', onReady); };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Fly to target when requested
+  // Fly to selected facility when selectedFacilityId changes (guard mapLoaded to avoid pre-load flyTo)
   useEffect(() => {
-    if (!flyToTarget) return;
-    flyTo(flyToTarget, 15);
-  }, [flyToTarget, flyTo]);
+    if (!selectedFacilityId || !mapLoaded) return;
+    const facility = facilityLookupRef.current.get(selectedFacilityId);
+    if (facility?.location) flyTo(facility.location, 15);
+  }, [selectedFacilityId, flyTo, mapLoaded]);
 
   // Facility click handler (stable ref via useCallback)
   const handleLayerClick = useCallback(
@@ -91,10 +90,9 @@ export function FacilityMapView({
       const feature = e.features?.[0];
       if (!feature) return;
       const id = feature.properties?.id;
-      const facility = facilityLookupRef.current.get(id);
-      if (facility) onFacilityClick(facility);
+      if (id) onSelect?.(id);
     },
-    [onFacilityClick],
+    [onSelect],
   );
 
   // Hover handlers (stable refs for proper cleanup)
@@ -220,16 +218,21 @@ export function FacilityMapView({
     };
   }, [map, mapLoaded, spriteReady, facilities, handleLayerClick, handleMouseEnter, handleMouseLeave]);
 
+  // Build lookup synchronously via useMemo so flyTo always sees the latest facilities
+  const facilityLookup = useMemo(() => {
+    const lookup = new Map<string, PublicFacility>();
+    for (const f of facilities) lookup.set(f.id, f);
+    return lookup;
+  }, [facilities]);
+  useEffect(() => {
+    facilityLookupRef.current = facilityLookup;
+  }, [facilityLookup]);
+
   // Update GeoJSON data when facilities change
   useEffect(() => {
     if (!map || !mapLoaded || !spriteReady) return;
     const source = map.getSource(SOURCE_ID) as AnyMap;
     if (source) source.setData(toGeoJson(facilities));
-
-    // Update lookup
-    const lookup = new Map<string, PublicFacility>();
-    for (const f of facilities) lookup.set(f.id, f);
-    facilityLookupRef.current = lookup;
   }, [facilities, map, mapLoaded, spriteReady]);
 
   // Update selected filter when selection changes
