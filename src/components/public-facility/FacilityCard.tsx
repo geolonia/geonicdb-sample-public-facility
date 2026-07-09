@@ -86,25 +86,25 @@ export function FacilityCard({ facility, selected, onClick }: FacilityCardProps)
         <div className="facility-card-footer">
           {facility.accessibility.wheelchair && (
             <span title="車椅子可">
-              <Accessibility style={{ width: 14, height: 14, color: '#60a5fa' }} />
+              <Accessibility style={{ width: 14, height: 14, color: 'var(--color-accessibility-blue)' }} />
             </span>
           )}
           {facility.accessibility.accessibleToilet && (
-            <span style={{ color: '#60a5fa', fontSize: 10, fontWeight: 500 }} title="バリアフリートイレ">BF</span>
+            <span style={{ color: 'var(--color-accessibility-blue)', fontSize: 10, fontWeight: 500 }} title="バリアフリートイレ">BF</span>
           )}
           {facility.accessibility.guideDog && (
             <span title="盲導犬同伴可">
-              <Dog style={{ width: 14, height: 14, color: '#60a5fa' }} />
+              <Dog style={{ width: 14, height: 14, color: 'var(--color-accessibility-blue)' }} />
             </span>
           )}
           {facility.accessibility.nursingRoom && (
             <span title="授乳室">
-              <Baby style={{ width: 14, height: 14, color: '#f472b6' }} />
+              <Baby style={{ width: 14, height: 14, color: 'var(--color-accessibility-pink)' }} />
             </span>
           )}
           {facility.accessibility.diaperChanging && (
             <span title="おむつ替え">
-              <Baby style={{ width: 14, height: 14, color: '#fbbf24' }} />
+              <Baby style={{ width: 14, height: 14, color: 'var(--color-accessibility-amber)' }} />
             </span>
           )}
           {facility.websiteUrl && (

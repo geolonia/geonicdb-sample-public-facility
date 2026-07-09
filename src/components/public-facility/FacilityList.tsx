@@ -97,6 +97,7 @@ export function FacilityList({ facilities, selectedId, onSelect }: FacilityListP
           data-testid="facility-filter-all"
           onClick={() => setTypeFilter('all')}
           className={`filter-chip${typeFilter === 'all' ? ' active' : ''}`}
+          aria-pressed={typeFilter === 'all'}
         >
           すべて
           <span style={{ marginLeft: 4, opacity: 0.6 }}>{facilities.length}</span>
@@ -109,6 +110,7 @@ export function FacilityList({ facilities, selectedId, onSelect }: FacilityListP
               key={type}
               onClick={() => setTypeFilter(type)}
               className="filter-chip"
+              aria-pressed={isActive}
               style={isActive ? { backgroundColor: colors.bg, color: colors.text } : undefined}
             >
               {type}
@@ -123,18 +125,21 @@ export function FacilityList({ facilities, selectedId, onSelect }: FacilityListP
         <button
           onClick={() => toggleAccessibility('wheelchair')}
           className={`filter-chip-sq${accessibilityFilters.has('wheelchair') ? ' active' : ''}`}
+          aria-pressed={accessibilityFilters.has('wheelchair')}
         >
           車椅子
         </button>
         <button
           onClick={() => toggleAccessibility('nursingRoom')}
           className={`filter-chip-sq${accessibilityFilters.has('nursingRoom') ? ' active' : ''}`}
+          aria-pressed={accessibilityFilters.has('nursingRoom')}
         >
           授乳室
         </button>
         <button
           onClick={() => setOpenNowFilter((v) => !v)}
           className={`filter-chip-sq${openNowFilter ? ' active' : ''}`}
+          aria-pressed={openNowFilter}
         >
           <Clock style={{ width: 10, height: 10 }} />
           営業中
