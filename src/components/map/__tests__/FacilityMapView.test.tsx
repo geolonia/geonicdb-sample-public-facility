@@ -93,4 +93,22 @@ describe('FacilityMapView init', () => {
     // useGeonicDbMap.initMap 経由で Map が生成される
     expect(MapCtor).toHaveBeenCalledTimes(1);
   });
+
+  it('cmd_647: コンテナ div にインライン style が設定されている (Tailwind クラスでなく inline style)', () => {
+    const { container } = render(
+      <FacilityMapView
+        facilities={[]}
+        selectedFacilityId={null}
+        flyToTarget={null}
+        onFacilityClick={() => {}}
+      />,
+    );
+    const mapDiv = container.querySelector('[data-lang="ja"]') as HTMLElement | null;
+    expect(mapDiv).not.toBeNull();
+    // Tailwind 未インストール環境では className による CSS は無効。
+    // inline style で高さが確実に設定されていることを検証する。
+    expect(mapDiv!.style.width).toBe('100%');
+    expect(mapDiv!.style.height).toBe('100%');
+    expect(mapDiv!.style.minHeight).toBe('400px');
+  });
 });
