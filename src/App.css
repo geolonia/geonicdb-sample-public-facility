@@ -8,14 +8,6 @@
   --color-primary-hover: #00f0c0;
   --color-danger: #ff4d6a;
   --color-danger-hover: #ff6b84;
-  /* Light UI colors */
-  --color-white: #fff;
-  --color-bg-subtle: #f9fafb;
-  --color-border-light: #e5e7eb;
-  --color-text-base: #111827;
-  --color-text-muted: #6b7280;
-  --color-accent: #3b82f6;
-  --color-accent-hover: #2563eb;
 }
 
 * {
@@ -26,8 +18,8 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--color-bg-subtle);
-  color: var(--color-text-base);
+  background: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
 }
 
@@ -43,15 +35,15 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 0.75rem 1rem;
-  background: var(--color-white);
-  border-bottom: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
   flex-shrink: 0;
 }
 
 .app-title {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--color-text-base);
+  color: var(--color-text);
   margin-right: auto;
 }
 
@@ -63,23 +55,23 @@ body {
 .tab-btn {
   padding: 0.35rem 0.9rem;
   border-radius: 6px;
-  border: 1px solid var(--color-border-light);
-  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
   font-size: 0.8rem;
   cursor: pointer;
-  color: var(--color-text-muted);
+  color: var(--color-text-dim);
   transition: all 0.15s;
 }
 
 .tab-btn.active {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: var(--color-white);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-bg);
 }
 
 .status-loading {
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--color-text-dim);
 }
 
 .status-error {
@@ -119,7 +111,7 @@ body {
   flex-direction: column;
   flex-shrink: 0;
   overflow-y: auto;
-  background: var(--color-white);
+  background: var(--color-surface);
 }
 
 @media (min-width: 768px) {
@@ -129,12 +121,12 @@ body {
 }
 
 .map-sidebar-desktop--left {
-  border-right: 1px solid var(--color-border-light);
+  border-right: 1px solid var(--color-border);
 }
 
 .map-sidebar-desktop--right {
-  border-left: 1px solid var(--color-border-light);
-  background: var(--color-bg-subtle);
+  border-left: 1px solid var(--color-border);
+  background: var(--color-surface);
 }
 
 .map-sidebar-main {
@@ -157,8 +149,8 @@ body {
   padding: 0.75rem;
   border-radius: 50%;
   border: none;
-  background: var(--color-accent);
-  color: var(--color-white);
+  background: var(--color-primary);
+  color: var(--color-bg);
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   cursor: pointer;
   z-index: 30;
@@ -166,7 +158,7 @@ body {
 }
 
 .map-sidebar-fab:hover {
-  background: var(--color-accent-hover);
+  background: var(--color-primary-hover);
 }
 
 .map-sidebar-fab--left {
