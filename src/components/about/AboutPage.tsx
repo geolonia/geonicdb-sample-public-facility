@@ -160,6 +160,10 @@ function renderMarkdown(source: string): ReactNode[] {
 
 // DEMO-ONLY START — このコンポーネントは fork 後に不要なら src/components/about/ を削除するだけで消せる
 export function AboutPage() {
-  return <article className="about-page">{renderMarkdown(architectureDoc)}</article>;
+  return (
+    <main id="app-main" tabIndex={-1} className="about-page">
+      {renderMarkdown(architectureDoc)}
+    </main>
+  );
 }
 // DEMO-ONLY END

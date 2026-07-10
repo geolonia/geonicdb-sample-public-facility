@@ -38,4 +38,11 @@ describe('AboutPage', () => {
     const listItems = document.querySelectorAll('.about-page ol li');
     expect(listItems.length).toBeGreaterThan(0);
   });
+
+  it('provides an #app-main landmark so the header skip-link has a target', () => {
+    render(<AboutPage />);
+    const main = document.getElementById('app-main');
+    expect(main).not.toBeNull();
+    expect(main?.tagName).toBe('MAIN');
+  });
 });
