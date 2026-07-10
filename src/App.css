@@ -788,6 +788,16 @@ tr:last-child td {
 .about-page a {
   color: var(--color-primary);
 }
+.about-page ul,
+.about-page ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+.about-page li {
+  margin: 0.25rem 0;
+}
 .about-page pre {
   background: var(--color-app-surface);
   border: 1px solid var(--color-border);

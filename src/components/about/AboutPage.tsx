@@ -123,6 +123,25 @@ function renderMarkdown(source: string): ReactNode[] {
       continue;
     }
 
+    const bulletMatch = /^[-*]\s+(.*)$/.exec(line);
+    if (bulletMatch) {
+      const items: string[] = [];
+      while (i < lines.length) {
+        const m = /^[-*]\s+(.*)$/.exec(lines[i]);
+        if (!m) break;
+        items.push(m[1]);
+        i++;
+      }
+      blocks.push(
+        <ul key={key++}>
+          {items.map((item, idx) => (
+            <li key={idx}>{renderInline(item)}</li>
+          ))}
+        </ul>,
+      );
+      continue;
+    }
+
     if (line.trim() === '') {
       i++;
       continue;

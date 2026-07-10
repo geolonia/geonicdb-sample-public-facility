@@ -26,4 +26,16 @@ describe('AboutPage', () => {
     const preBlocks = document.querySelectorAll('pre');
     expect(preBlocks.length).toBeGreaterThan(0);
   });
+
+  it('renders bullet list lines as <ul><li> instead of raw "-" text', () => {
+    render(<AboutPage />);
+    const listItems = Array.from(document.querySelectorAll('.about-page ul li'));
+    expect(listItems.some((li) => /書き込み.*許可されていません/.test(li.textContent ?? ''))).toBe(true);
+  });
+
+  it('renders numbered list lines as <ol><li>', () => {
+    render(<AboutPage />);
+    const listItems = document.querySelectorAll('.about-page ol li');
+    expect(listItems.length).toBeGreaterThan(0);
+  });
 });
