@@ -51,7 +51,7 @@ export function MapSidebarLayout({
       )}
 
       {/* Main content */}
-      <main className="map-sidebar-main">
+      <main id="app-main" className="map-sidebar-main">
         {children}
       </main>
 

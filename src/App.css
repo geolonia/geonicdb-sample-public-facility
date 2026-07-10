@@ -18,6 +18,21 @@
   --color-danger-hover: #ff6b84;
 }
 
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: var(--color-bg);
+  font-weight: 600;
+  z-index: 100;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,7 +40,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-family-base);
   background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
@@ -374,8 +389,8 @@ tr:last-child td {
 }
 
 .attr-badge {
-  background: rgba(0, 212, 170, 0.1);
-  border: 1px solid rgba(0, 212, 170, 0.2);
+  background: var(--color-primary-tint);
+  border: 1px solid var(--color-primary-tint-strong);
   padding: 0.15rem 0.5rem;
   border-radius: 3px;
   font-size: 0.75rem;
@@ -638,7 +653,7 @@ tr:last-child td {
 }
 .facility-detail-close-btn:hover {
   color: var(--color-text);
-  background: rgba(255,255,255,0.06);
+  background: var(--color-chip-bg);
 }
 .facility-detail-info {
   padding: 0 1rem 0.75rem;

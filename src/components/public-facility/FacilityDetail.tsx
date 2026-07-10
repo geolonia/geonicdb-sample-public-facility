@@ -81,8 +81,8 @@ export function FacilityDetail({ facility, onClose }: FacilityDetailProps) {
             <p className="facility-detail-kana">{facility.nameKana}</p>
           )}
         </div>
-        <button onClick={onClose} className="facility-detail-close-btn">
-          <X style={{ width: 16, height: 16 }} />
+        <button onClick={onClose} className="facility-detail-close-btn" aria-label="閉じる">
+          <X style={{ width: 16, height: 16 }} aria-hidden="true" />
         </button>
       </div>
 
@@ -90,43 +90,43 @@ export function FacilityDetail({ facility, onClose }: FacilityDetailProps) {
       <div className="facility-detail-info">
         {facility.postalCode && (
           <div className="facility-detail-row">
-            <Mail className="facility-detail-row-icon" />
+            <Mail className="facility-detail-row-icon" aria-hidden="true" />
             <span>〒{formatPostalCode(facility.postalCode)}</span>
           </div>
         )}
         {facility.address && (
           <div className="facility-detail-row">
-            <MapPin className="facility-detail-row-icon" />
+            <MapPin className="facility-detail-row-icon" aria-hidden="true" />
             <span>{facility.address}</span>
           </div>
         )}
         {facility.municipality && (
           <div className="facility-detail-row">
-            <Building2 className="facility-detail-row-icon" />
+            <Building2 className="facility-detail-row-icon" aria-hidden="true" />
             <span>{facility.municipality}</span>
           </div>
         )}
         {facility.phone && (
           <div className="facility-detail-row">
-            <Phone className="facility-detail-row-icon" />
+            <Phone className="facility-detail-row-icon" aria-hidden="true" />
             <span>{facility.phone}</span>
           </div>
         )}
         {hours && (
           <div className="facility-detail-row">
-            <Clock className="facility-detail-row-icon" />
+            <Clock className="facility-detail-row-icon" aria-hidden="true" />
             <span>{hours}</span>
           </div>
         )}
         {facility.openDays && (
           <div className="facility-detail-row">
-            <Calendar className="facility-detail-row-icon" />
+            <Calendar className="facility-detail-row-icon" aria-hidden="true" />
             <span>{facility.openDays}</span>
           </div>
         )}
         {facility.openTimeNote && (
           <div className="facility-detail-row" style={{ color: 'var(--color-text-dim)' }}>
-            <Clock className="facility-detail-row-icon" style={{ opacity: 0.5 }} />
+            <Clock className="facility-detail-row-icon" aria-hidden="true" style={{ opacity: 0.5 }} />
             <span style={{ fontStyle: 'italic' }}>{facility.openTimeNote}</span>
           </div>
         )}
@@ -139,7 +139,7 @@ export function FacilityDetail({ facility, onClose }: FacilityDetailProps) {
           <div className="facility-detail-badges">
             {accessibilityEntries.map(({ key, label, icon: Icon }) => (
               <span key={key} className="accessibility-badge">
-                <Icon style={{ width: 12, height: 12 }} />
+                <Icon style={{ width: 12, height: 12 }} aria-hidden="true" />
                 {label}
               </span>
             ))}
@@ -163,7 +163,7 @@ export function FacilityDetail({ facility, onClose }: FacilityDetailProps) {
             rel="noopener noreferrer"
             className="facility-detail-link"
           >
-            <ExternalLink style={{ width: 12, height: 12 }} />
+            <ExternalLink style={{ width: 12, height: 12 }} aria-hidden="true" />
             Webサイト
           </a>
         </div>
@@ -173,7 +173,7 @@ export function FacilityDetail({ facility, onClose }: FacilityDetailProps) {
       {extraAttributes.length > 0 && (
         <div className="facility-detail-section">
           <p className="facility-detail-section-title">
-            <Database style={{ width: 12, height: 12 }} />
+            <Database style={{ width: 12, height: 12 }} aria-hidden="true" />
             その他の属性
           </p>
           <dl className="facility-extra-attrs">

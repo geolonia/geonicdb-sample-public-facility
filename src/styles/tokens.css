@@ -1,0 +1,73 @@
+/* @geolonia/design-tokens v0.2.0 vendored 2026-07-10 — update via: cd ~/workspace/geolonia-design-system && git pull origin main && npm install && npm run build, then copy packages/design-tokens/dist/tokens.css here */
+:root {
+  /* === カラー（意味で名付けたセマンティックトークン） === */
+
+  /* 主役：青。文字・ボタン・リンク・フォーカスに使用可（白地で4.5:1以上） */
+  --color-action-primary: #1E4FB8;
+  --color-action-primary-hover: #163E86;
+
+  /* 差し色：オレンジ。縁取り・バッジ・下線・フォーカスのみ。白文字を乗せた塗りは禁止 */
+  --color-action-accent: #E85A19;
+  --color-accent-text: #9A3D0E;   /* 薄いオレンジ地に乗せる濃いオレンジ文字 */
+  --color-accent-surface: #FBEADF; /* バッジ等の薄いオレンジ地 */
+
+  /* 構造：濃紺。ヘッダーの濃い面・見出し・テキスト強調 */
+  --color-structure-navy: #1B2A4A;
+
+  /* 状態色（機能カラー） */
+  --color-status-success: #1F7A3D;
+  --color-status-warning: #B25E00;
+  --color-status-danger: #C0271E;
+
+  /* テキスト・面・境界（ニュートラル） */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #5A5A5A;
+  --color-background: #FFFFFF;
+  --color-surface: #F3F4F6;
+  --color-border: #D6D9DE;
+
+  /* === フォントファミリー === */
+  --font-family-base: "Noto Sans JP", "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic", sans-serif;
+
+  /* === タイポグラフィ（weightは400/500の2種のみ） === */
+  --font-size-heading-l: 28px;
+  --font-size-heading-m: 22px;
+  --font-size-heading-s: 18px;
+  --font-size-body: 16px;
+  --font-size-caption: 13px;
+  --font-weight-regular: 400;
+  --font-weight-bold: 500;
+  --line-height-body: 1.7;
+
+  /* === スペーシング === */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* === 角丸 === */
+  --radius-control: 6px; /* ボタン・入力欄 */
+  --radius-card: 10px;   /* カード・パネル */
+
+  /* === レスポンシブ: ブレークポイント ===
+     CSS @media の min-width/max-width 値には直接使えない（カスタムプロパティ制約）。
+     参照・JavaScript でのビューポート判定・calc() での使用に限る。 */
+  --bp-sm:  640px;  /* スマートフォン横向き・小型タブレット */
+  --bp-md:  768px;  /* タブレット縦向き（ナビ切り替え基準） */
+  --bp-lg: 1024px;  /* タブレット横向き・小型デスクトップ */
+  --bp-xl: 1280px;  /* デスクトップ標準 */
+
+  /* === レスポンシブ: コンテナ幅 === */
+  --container-sm:   640px;  /* フォームパネル・狭いコンテンツ */
+  --container-md:   768px;  /* 本文カラム（モバイル上限） */
+  --container-lg:  1024px;  /* サイドバー付きダッシュボード */
+  --container-xl:  1280px;  /* 標準ページ幅 */
+  --container-max: 1440px;  /* フルワイドレイアウト上限 */
+
+  /* === レスポンシブ: フルイドタイポグラフィ ===
+     clamp(最小, 流動値, 最大) で画面幅に応じてサイズが変化する。
+     既存の heading-* は可読性のため固定値を維持。
+     大型ランディングページ等で使う display サイズのみ流動にする。 */
+  --font-size-display: clamp(24px, 3vw + 6px, 44px);
+}

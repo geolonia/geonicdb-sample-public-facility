@@ -55,7 +55,7 @@ export function FacilityCard({ facility, selected, onClick }: FacilityCardProps)
       {/* Address */}
       {facility.address && (
         <div className="facility-card-row">
-          <MapPin style={{ width: 12, height: 12, flexShrink: 0 }} />
+          <MapPin style={{ width: 12, height: 12, flexShrink: 0 }} aria-hidden="true" />
           <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {facility.address}
           </span>
@@ -65,7 +65,7 @@ export function FacilityCard({ facility, selected, onClick }: FacilityCardProps)
       {/* Phone */}
       {facility.phone && (
         <div className="facility-card-row">
-          <Phone style={{ width: 12, height: 12, flexShrink: 0 }} />
+          <Phone style={{ width: 12, height: 12, flexShrink: 0 }} aria-hidden="true" />
           <span>{facility.phone}</span>
         </div>
       )}
@@ -73,7 +73,7 @@ export function FacilityCard({ facility, selected, onClick }: FacilityCardProps)
       {/* Operating hours */}
       {hours && (
         <div className="facility-card-row">
-          <Clock style={{ width: 12, height: 12, flexShrink: 0 }} />
+          <Clock style={{ width: 12, height: 12, flexShrink: 0 }} aria-hidden="true" />
           <span>{hours}</span>
           {facility.openDays && (
             <span style={{ marginLeft: 4, opacity: 0.7 }}>({facility.openDays})</span>
@@ -85,26 +85,26 @@ export function FacilityCard({ facility, selected, onClick }: FacilityCardProps)
       {(hasAccessibility || facility.websiteUrl) && (
         <div className="facility-card-footer">
           {facility.accessibility.wheelchair && (
-            <span title="車椅子可">
-              <Accessibility style={{ width: 14, height: 14, color: 'var(--color-accessibility-blue)' }} />
+            <span aria-label="車椅子可">
+              <Accessibility style={{ width: 14, height: 14, color: 'var(--color-accessibility-blue)' }} aria-hidden="true" />
             </span>
           )}
           {facility.accessibility.accessibleToilet && (
-            <span style={{ color: 'var(--color-accessibility-blue)', fontSize: 10, fontWeight: 500 }} title="バリアフリートイレ">BF</span>
+            <span style={{ color: 'var(--color-accessibility-blue)', fontSize: 10, fontWeight: 500 }} aria-label="バリアフリートイレ">BF</span>
           )}
           {facility.accessibility.guideDog && (
-            <span title="盲導犬同伴可">
-              <Dog style={{ width: 14, height: 14, color: 'var(--color-accessibility-blue)' }} />
+            <span aria-label="盲導犬同伴可">
+              <Dog style={{ width: 14, height: 14, color: 'var(--color-accessibility-blue)' }} aria-hidden="true" />
             </span>
           )}
           {facility.accessibility.nursingRoom && (
-            <span title="授乳室">
-              <Baby style={{ width: 14, height: 14, color: 'var(--color-accessibility-pink)' }} />
+            <span aria-label="授乳室">
+              <Baby style={{ width: 14, height: 14, color: 'var(--color-accessibility-pink)' }} aria-hidden="true" />
             </span>
           )}
           {facility.accessibility.diaperChanging && (
-            <span title="おむつ替え">
-              <Baby style={{ width: 14, height: 14, color: 'var(--color-accessibility-amber)' }} />
+            <span aria-label="おむつ替え">
+              <Baby style={{ width: 14, height: 14, color: 'var(--color-accessibility-amber)' }} aria-hidden="true" />
             </span>
           )}
           {facility.websiteUrl && (
@@ -116,7 +116,7 @@ export function FacilityCard({ facility, selected, onClick }: FacilityCardProps)
               onClick={(e) => e.stopPropagation()}
               title="Webサイト"
             >
-              <ExternalLink style={{ width: 14, height: 14 }} />
+              <ExternalLink style={{ width: 14, height: 14 }} aria-hidden="true" />
             </a>
           )}
         </div>
