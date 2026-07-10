@@ -79,10 +79,11 @@ export function FacilityList({ facilities, selectedId, onSelect }: FacilityListP
       {/* Search */}
       <div className="facility-list-search">
         <div className="facility-search-wrapper">
-          <Search className="facility-search-icon" />
+          <Search className="facility-search-icon" aria-hidden="true" />
           <input
             type="text"
             data-testid="facility-search-input"
+            aria-label="施設名・住所で検索"
             placeholder="施設名・住所で検索"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
@@ -141,7 +142,7 @@ export function FacilityList({ facilities, selectedId, onSelect }: FacilityListP
           className={`filter-chip-sq${openNowFilter ? ' active' : ''}`}
           aria-pressed={openNowFilter}
         >
-          <Clock style={{ width: 10, height: 10 }} />
+          <Clock style={{ width: 10, height: 10 }} aria-hidden="true" />
           営業中
         </button>
       </div>

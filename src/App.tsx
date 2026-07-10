@@ -15,10 +15,11 @@ function App() {
 
   return (
     <div className="app-layout">
+      <a href="#app-main" className="skip-link">メインコンテンツへスキップ</a>
       <header className="app-header">
         <h1 className="app-title">公共施設マップ</h1>
         {loading && <span className="status-loading">読み込み中...</span>}
-        {error && <span className="status-error">{error}</span>}
+        {error && <span role="alert" className="status-error">{error}</span>}
       </header>
 
       <MapSidebarLayout

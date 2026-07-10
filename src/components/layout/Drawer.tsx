@@ -93,7 +93,7 @@ export function Drawer({ children, position = 'left', width = '20rem', ariaLabel
           bottom: 0,
           width: width,
           maxWidth: 'calc(100vw - 3rem)',
-          background: '#fff',
+          background: 'var(--color-background)',
           boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
           zIndex: 50,
           display: 'flex',

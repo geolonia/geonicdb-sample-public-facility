@@ -106,7 +106,7 @@ export function FacilityMapView({
       const props = feature.properties;
       const parts = [props.facilityType, props.phone].filter(Boolean);
       const html = `<strong>${props.name}</strong>` +
-        (parts.length ? `<div style="color:#666;margin-top:2px;font-size:12px">${parts.join(' | ')}</div>` : '');
+        (parts.length ? `<div style="color:var(--color-text-secondary);margin-top:2px;font-size:12px">${parts.join(' | ')}</div>` : '');
       popupRef.current?.remove();
       popupRef.current = new geolonia.Popup({ closeButton: false, closeOnClick: false, offset: [0, -32] })
         .setLngLat(coords)

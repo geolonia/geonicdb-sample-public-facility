@@ -177,7 +177,7 @@ export function GeonicDbMap({
             }).setHTML(`
               <div style="font-family: sans-serif; font-size: 12px;">
                 <strong>${entity.id}</strong><br/>
-                <span style="color: #666;">${entity.type}</span>
+                <span style="color: var(--color-text-secondary);">${entity.type}</span>
               </div>
             `);
 
