@@ -1,21 +1,22 @@
 :root {
-  --color-bg: #0a0a0a;
-  --color-surface: #141414;
-  --color-border: #2a2a2a;
-  --color-border-hover: #444;
-  --color-text: #e0e0e0;
-  --color-text-dim: #888;
-  --color-primary: #00d4aa;
-  --color-primary-hover: #00f0c0;
-  --color-primary-tint: rgba(0,212,170,0.15);
-  --color-primary-tint-strong: rgba(0,212,170,0.2);
-  --color-chip-bg: rgba(255,255,255,0.06);
-  --color-chip-bg-hover: rgba(255,255,255,0.1);
-  --color-accessibility-blue: #60a5fa;
-  --color-accessibility-pink: #f472b6;
-  --color-accessibility-amber: #fbbf24;
-  --color-danger: #ff4d6a;
-  --color-danger-hover: #ff6b84;
+  /* DADS light テーマ — tokens.css 変数へのエイリアス (dead import 解消) */
+  --color-bg: var(--color-background);
+  /* --color-surface: tokens.css 既定値 #F3F4F6 を継承 */
+  /* --color-border:  tokens.css 既定値 #D6D9DE を継承 */
+  --color-border-hover: var(--color-action-primary);
+  --color-text: var(--color-text-primary);
+  --color-text-dim: var(--color-text-secondary);
+  --color-primary: var(--color-action-primary);
+  --color-primary-hover: var(--color-action-primary-hover);
+  --color-primary-tint: var(--color-accent-surface);
+  --color-primary-tint-strong: var(--color-border);
+  --color-chip-bg: var(--color-surface);
+  --color-chip-bg-hover: var(--color-border);
+  --color-accessibility-blue: var(--color-action-primary);
+  --color-accessibility-pink: var(--color-action-accent);
+  --color-accessibility-amber: var(--color-status-warning);
+  --color-danger: var(--color-status-danger);
+  --color-danger-hover: var(--color-action-primary-hover);
 }
 
 .skip-link {
@@ -99,7 +100,7 @@ body {
 
 .status-error {
   font-size: 0.75rem;
-  color: #ef4444;
+  color: var(--color-status-danger);
 }
 
 .app-main {
@@ -240,7 +241,7 @@ body {
 }
 
 .error {
-  background: rgba(255, 77, 106, 0.1);
+  background: var(--color-surface);
   border: 1px solid var(--color-danger);
   color: var(--color-danger);
   padding: 0.75rem 1rem;
@@ -296,7 +297,7 @@ body {
 
 button[type='submit'] {
   background: var(--color-primary);
-  color: #000;
+  color: var(--color-background);
   border: none;
   padding: 0.6rem 1.5rem;
   border-radius: 4px;
@@ -410,7 +411,7 @@ tr:last-child td {
 
 .delete-btn:hover:not(:disabled) {
   background: var(--color-danger);
-  color: #fff;
+  color: var(--color-background);
 }
 
 .delete-btn:disabled {
@@ -558,7 +559,7 @@ tr:last-child td {
 .filter-chip.active,
 .filter-chip-sq.active {
   background: var(--color-primary);
-  color: #000;
+  color: var(--color-background);
 }
 .facility-filter-row-2 {
   display: flex;

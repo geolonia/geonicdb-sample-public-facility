@@ -1,6 +1,6 @@
 export function Attribution() {
   return (
-    <p style={{ fontSize: '0.75rem', color: '#666', margin: '4px 8px' }}>
+    <p style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary)', margin: '4px 8px' }}>
       データ:{' '}
       <a
         href="https://catalog.data.go.jp/dataset/itabashi-public-facilities"
