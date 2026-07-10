@@ -747,3 +747,76 @@ tr:last-child td {
   color: var(--color-text-dim);
   margin-left: 4px;
 }
+
+/* DEMO-ONLY START — 削除する場合はこのブロックと src/components/about/ を削除 */
+.about-link {
+  padding: 0.35rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-app-surface);
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: var(--color-text-dim);
+}
+.about-link:hover {
+  color: var(--color-text);
+  border-color: var(--color-border-hover);
+}
+
+.about-page {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.about-page h1,
+.about-page h2,
+.about-page h3 {
+  margin: 1.5rem 0 0.75rem;
+  color: var(--color-text);
+}
+.about-page h1:first-child,
+.about-page h2:first-child {
+  margin-top: 0;
+}
+.about-page p {
+  margin: 0.5rem 0;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+.about-page a {
+  color: var(--color-primary);
+}
+.about-page ul,
+.about-page ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+.about-page li {
+  margin: 0.25rem 0;
+}
+.about-page pre {
+  background: var(--color-app-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  font-size: 0.8rem;
+  margin: 0.75rem 0;
+}
+.about-page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 0.85rem;
+}
+.about-page th,
+.about-page td {
+  border: 1px solid var(--color-border);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+/* DEMO-ONLY END */
