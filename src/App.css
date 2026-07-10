@@ -1,7 +1,7 @@
 :root {
   /* DADS light テーマ — tokens.css 変数へのエイリアス (dead import 解消) */
   --color-bg: var(--color-background);
-  /* --color-surface: tokens.css 既定値 #F3F4F6 を継承 */
+  --color-app-surface: var(--color-surface);
   /* --color-border:  tokens.css 既定値 #D6D9DE を継承 */
   --color-border-hover: var(--color-action-primary);
   --color-text: var(--color-text-primary);
@@ -59,7 +59,7 @@ body {
   align-items: center;
   gap: 1rem;
   padding: 0.75rem 1rem;
-  background: var(--color-surface);
+  background: var(--color-app-surface);
   border-bottom: 1px solid var(--color-border);
   flex-shrink: 0;
 }
@@ -80,7 +80,7 @@ body {
   padding: 0.35rem 0.9rem;
   border-radius: 6px;
   border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  background: var(--color-app-surface);
   font-size: 0.8rem;
   cursor: pointer;
   color: var(--color-text-dim);
@@ -100,7 +100,7 @@ body {
 
 .status-error {
   font-size: 0.75rem;
-  color: var(--color-status-danger);
+  color: var(--color-danger);
 }
 
 .app-main {
@@ -135,7 +135,7 @@ body {
   flex-direction: column;
   flex-shrink: 0;
   overflow-y: auto;
-  background: var(--color-surface);
+  background: var(--color-app-surface);
 }
 
 @media (min-width: 768px) {
@@ -150,7 +150,7 @@ body {
 
 .map-sidebar-desktop--right {
   border-left: 1px solid var(--color-border);
-  background: var(--color-surface);
+  background: var(--color-app-surface);
 }
 
 .map-sidebar-main {
@@ -241,7 +241,7 @@ body {
 }
 
 .error {
-  background: var(--color-surface);
+  background: var(--color-app-surface);
   border: 1px solid var(--color-danger);
   color: var(--color-danger);
   padding: 0.75rem 1rem;
@@ -251,7 +251,7 @@ body {
 }
 
 .create-form {
-  background: var(--color-surface);
+  background: var(--color-app-surface);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 1.5rem;
@@ -297,7 +297,7 @@ body {
 
 button[type='submit'] {
   background: var(--color-primary);
-  color: var(--color-background);
+  color: var(--color-bg);
   border: none;
   padding: 0.6rem 1.5rem;
   border-radius: 4px;
@@ -317,7 +317,7 @@ button[type='submit']:disabled {
 }
 
 .entity-list {
-  background: var(--color-surface);
+  background: var(--color-app-surface);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 1.5rem;
@@ -411,7 +411,7 @@ tr:last-child td {
 
 .delete-btn:hover:not(:disabled) {
   background: var(--color-danger);
-  color: var(--color-background);
+  color: var(--color-bg);
 }
 
 .delete-btn:disabled {
@@ -421,7 +421,7 @@ tr:last-child td {
 
 /* ── FacilityCard ── */
 .facility-card {
-  background: var(--color-surface);
+  background: var(--color-app-surface);
   border-radius: 8px;
   border: 2px solid var(--color-border);
   padding: 0.75rem;
@@ -559,7 +559,7 @@ tr:last-child td {
 .filter-chip.active,
 .filter-chip-sq.active {
   background: var(--color-primary);
-  color: var(--color-background);
+  color: var(--color-bg);
 }
 .facility-filter-row-2 {
   display: flex;
@@ -595,7 +595,7 @@ tr:last-child td {
   bottom: 1rem;
   left: 1rem;
   right: 1rem;
-  background: var(--color-surface);
+  background: var(--color-app-surface);
   border-radius: 8px;
   border: 1px solid var(--color-border);
   z-index: 10;
