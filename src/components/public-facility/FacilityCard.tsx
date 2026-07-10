@@ -85,25 +85,25 @@ export function FacilityCard({ facility, selected, onClick }: FacilityCardProps)
       {(hasAccessibility || facility.websiteUrl) && (
         <div className="facility-card-footer">
           {facility.accessibility.wheelchair && (
-            <span aria-label="車椅子可">
+            <span role="img" aria-label="車椅子可">
               <Accessibility style={{ width: 14, height: 14, color: 'var(--color-accessibility-blue)' }} aria-hidden="true" />
             </span>
           )}
           {facility.accessibility.accessibleToilet && (
-            <span style={{ color: 'var(--color-accessibility-blue)', fontSize: 10, fontWeight: 500 }} aria-label="バリアフリートイレ">BF</span>
+            <span role="img" style={{ color: 'var(--color-accessibility-blue)', fontSize: 10, fontWeight: 500 }} aria-label="バリアフリートイレ">BF</span>
           )}
           {facility.accessibility.guideDog && (
-            <span aria-label="盲導犬同伴可">
+            <span role="img" aria-label="盲導犬同伴可">
               <Dog style={{ width: 14, height: 14, color: 'var(--color-accessibility-blue)' }} aria-hidden="true" />
             </span>
           )}
           {facility.accessibility.nursingRoom && (
-            <span aria-label="授乳室">
+            <span role="img" aria-label="授乳室">
               <Baby style={{ width: 14, height: 14, color: 'var(--color-accessibility-pink)' }} aria-hidden="true" />
             </span>
           )}
           {facility.accessibility.diaperChanging && (
-            <span aria-label="おむつ替え">
+            <span role="img" aria-label="おむつ替え">
               <Baby style={{ width: 14, height: 14, color: 'var(--color-accessibility-amber)' }} aria-hidden="true" />
             </span>
           )}

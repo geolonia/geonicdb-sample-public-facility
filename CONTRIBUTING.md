@@ -19,7 +19,7 @@
    ```
 2. `packages/design-tokens/dist/tokens.css` を `src/styles/tokens.css` へコピー
 3. ファイル先頭のコメント行のバージョンと日付を更新:
-   ```
+   ```text
    /* @geolonia/design-tokens vX.Y.Z vendored YYYY-MM-DD — update via: ... */
    ```
 4. PR を送る
