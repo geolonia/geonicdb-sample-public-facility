@@ -1,6 +1,6 @@
 # GeonicDB サンプル: 公共施設マップ
 
-自治体のオープンデータ（公共施設一覧）を [GeonicDB](https://github.com/geolonia/geonicdb) に登録し、[Geolonia Maps](https://geolonia.com/) で可視化する最小構成のサンプルアプリケーションです。
+自治体のオープンデータ（公共施設一覧）を [GeonicDB](https://docs.geonicdb.com/) に登録し、[Geolonia Maps](https://geolonia.com/) で可視化する最小構成のサンプルアプリケーションです。
 
 ![公共施設マップのスクリーンショット](docs/images/screenshot.png)
 
@@ -29,8 +29,10 @@ npm run dev
 
 | 接続先 | 手順 |
 |---|---|
-| (a) ローカルの `geonicdb` | [geonicdb](https://github.com/geolonia/geonicdb) を `clone` → `npm install` → `npm start`（http://localhost:3000 で起動）。`VITE_GEONICDB_URL=http://localhost:3000` |
-| (b) Geolonia 発行アカウントの自テナント | Geolonia から発行されたテナントの URL・テナント名を `VITE_GEONICDB_URL` / `VITE_GEONICDB_TENANT` に設定 |
+| (a) Geolonia 発行アカウントの自テナント（推奨） | [Geolonia へのお問い合わせ](https://www.geolonia.com/contact/)から GeonicDB SaaS のテナント発行を申請し、発行された URL・テナント名を `VITE_GEONICDB_URL` / `VITE_GEONICDB_TENANT` に設定 |
+| (b) 自前でホストした GeonicDB（社内利用など） | GeonicDB 本体（`geonicdb`）はエンジンリポジトリのため非公開です。自前でホストしている GeonicDB インスタンスがあれば、その URL を `VITE_GEONICDB_URL` に設定してください |
+
+エンティティの操作には [`@geolonia/geonicdb-cli`](https://www.npmjs.com/package/@geolonia/geonicdb-cli)（`npm install -g @geolonia/geonicdb-cli`）が便利です。
 
 | 変数名 | 説明 |
 |---|---|
@@ -67,8 +69,10 @@ npm run seed
 
 ビルドした `dist/` は静的ファイルなので、GitHub Pages・Netlify・任意の静的ホスティングにそのまま配置できます。
 
-- **GitHub Pages**（既定）: `main` への push で `.github/workflows/deploy-pages.yml` が自動デプロイします。
-- **Netlify**: 雛形（`netlify.toml`）を用意しています。
+★`VITE_GEONICDB_URL` / `VITE_GEONICDB_TENANT` / `VITE_GEOLONIA_API_KEY`（および GitHub Pages 用の `VITE_BASE`）は**ビルド時**に `dist/` へ焼き込まれる値です。ホスティング先ごとにビルド時の環境変数設定が必要です。
+
+- **GitHub Pages**（既定）: `main` への push で `.github/workflows/deploy-pages.yml` が自動デプロイします。ワークフロー内で `npm run build` にこれらの環境変数（リポジトリ変数 `GEOLONIA_API_KEY` 等）を注入しています。
+- **Netlify**: 雛形（`netlify.toml`）を用意しています。Netlify サイトの Site configuration > Environment variables で同様の値を設定してください。
 
 <!-- P6 で本セクションを手順まで完成させる予定 -->
 
