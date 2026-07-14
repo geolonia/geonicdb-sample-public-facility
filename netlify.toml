@@ -1,0 +1,14 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# VITE_GEONICDB_URL / VITE_GEONICDB_TENANT / VITE_GEOLONIA_API_KEY / VITE_DEMO_MODE は
+# ここでは設定しない。netlify.toml の [build.environment] は Netlify UI で設定した
+# 環境変数より優先されてしまうため、ここに書くと UI 側の設定が無視される。
+# Netlify サイトの Site configuration > Environment variables で設定すること。
+
+# SPA なのでどのパスへの直接アクセスも index.html を返す
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

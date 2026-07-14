@@ -71,10 +71,36 @@ npm run seed
 
 ★`VITE_GEONICDB_URL` / `VITE_GEONICDB_TENANT` / `VITE_GEOLONIA_API_KEY`（および GitHub Pages 用の `VITE_BASE`）は**ビルド時**に `dist/` へ焼き込まれる値です。ホスティング先ごとにビルド時の環境変数設定が必要です。
 
-- **GitHub Pages**（既定）: `main` への push で `.github/workflows/deploy-pages.yml` が自動デプロイします。ワークフロー内で `npm run build` にこれらの環境変数（リポジトリ変数 `GEOLONIA_API_KEY` 等）を注入しています。
-- **Netlify**: 雛形（`netlify.toml`）を用意しています。Netlify サイトの Site configuration > Environment variables で同様の値を設定してください。
+### GitHub Pages（既定）
 
-<!-- P6 で本セクションを手順まで完成させる予定 -->
+`main` への push で [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) が自動的にビルド・デプロイします。
+
+1. リポジトリの Settings > Pages で Source を「GitHub Actions」に設定する。
+2. 自団体の GeonicDB・地図キーを使う場合は Settings > Secrets and variables > Actions > Variables で以下を設定する（未設定でもプレースホルダーでビルドは成功する。地図タイルが空白になるだけ）。
+
+   | 変数名 | 説明 |
+   |---|---|
+   | `GEOLONIA_API_KEY` | Geolonia Maps の API キー（未設定時は `YOUR-API-KEY`） |
+   | `GEONICDB_URL` | GeonicDB エンドポイント（未設定時は `https://geonicdb.geolonia.com`） |
+   | `GEONICDB_TENANT` | GeonicDB テナント名（未設定時は `demo`） |
+
+3. `VITE_BASE` はワークフローがリポジトリ名から自動設定するため、手動設定は不要。
+
+### Netlify
+
+雛形（[`netlify.toml`](netlify.toml)）を同梱しています。
+
+1. [Netlify](https://app.netlify.com/) で「Add new site」→「Import an existing project」から本リポジトリを選択する。
+2. ビルドコマンド・公開ディレクトリは `netlify.toml` から自動検出される（`npm run build` / `dist`）。
+3. Site configuration > Environment variables で `VITE_GEONICDB_URL` / `VITE_GEONICDB_TENANT` / `VITE_GEOLONIA_API_KEY` を設定する（`netlify.toml` には値を含めていない。`netlify.toml` の `[build.environment]` は Netlify UI の設定より優先されてしまうため、意図的に空にしてある）。未設定のままだと施設データ・地図タイルとも表示されない。GitHub Pages と異なり `VITE_BASE` は不要（ルート `/` で配信されるため既定のままでよい）。
+
+### 自環境（任意の静的ホスティング）
+
+```bash
+VITE_GEONICDB_URL=<自GeonicDB> VITE_GEONICDB_TENANT=<自テナント> VITE_GEOLONIA_API_KEY=<自キー> npm run build
+```
+
+`dist/` を任意の静的ホスティング（S3+CloudFront・Cloudflare Pages 等）にアップロードしてください。
 
 ## カスタマイズ起点
 
