@@ -2,14 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
-# 以下はフォーク直後でもビルドが通るためのプレースホルダー既定値です。
-# 実際の地図タイル表示・自GeonicDBへの接続には、Netlify サイトの
-# Site configuration > Environment variables で上書きしてください。
-[build.environment]
-  VITE_GEONICDB_URL = "https://geonicdb.geolonia.com"
-  VITE_GEONICDB_TENANT = "demo"
-  VITE_GEOLONIA_API_KEY = "YOUR-API-KEY"
-  VITE_DEMO_MODE = "true"
+# VITE_GEONICDB_URL / VITE_GEONICDB_TENANT / VITE_GEOLONIA_API_KEY / VITE_DEMO_MODE は
+# ここでは設定しない。netlify.toml の [build.environment] は Netlify UI で設定した
+# 環境変数より優先されてしまうため、ここに書くと UI 側の設定が無視される。
+# Netlify サイトの Site configuration > Environment variables で設定すること。
 
 # SPA なのでどのパスへの直接アクセスも index.html を返す
 [[redirects]]
